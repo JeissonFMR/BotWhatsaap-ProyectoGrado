@@ -1,0 +1,19 @@
+{
+  "name": "venom3whatsapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jeisson Montenegro - Brayan Jamanoy - Jorge Rivera",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.3.4",
+    "pg": "^8.9.0",
+    "random-useragent": "^0.5.0",
+    "timers": "^0.1.1",
+    "venom-bot": "^4.3.3"
+  }
+}
