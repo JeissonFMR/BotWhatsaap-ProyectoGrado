@@ -35,9 +35,6 @@ function azar(date) {
 
 //funcion principal ____________________________________
 function start(client) {
-  // client.setProfilePic('./images/logoTesis.png');
-  // // Set client status
-  // client.setProfileStatus('✈️Chatbot para peticiones hacia la Jefatura de Sotware!😎🤩✈️');
 
 
   const cliente = new Client({
@@ -58,7 +55,6 @@ function start(client) {
     // console.log(message);
 
     var nameUser = message.notifyName;
-    // var nameUser = message.chat.contact.pushname;
     var msjwp = '';
     var number = message.from;
 
@@ -280,8 +276,9 @@ function start(client) {
       //FIN SCRAPING tau
 
       //SCRAPING ZEUS
-      const webScrapingZeus = async (msjzeus, idData) => {
+      const webScrapingZeus = async (msjzeus2, idData) => {
 
+        let msjzeus = msjzeus2.toLowerCase();
         try {
           client
             .reply(message.from, `Por favor *${nameUser}* espera un momento. 🤝🤖`, message.id)
@@ -299,6 +296,7 @@ function start(client) {
             headless: true,
             ignoreHTTPSErrors: true,
           });
+
           console.log(msjzeus + "es el msj ZEUSSSSSSS");
           const page = await browser.newPage();
 
@@ -560,7 +558,7 @@ function start(client) {
       const acercaDe = async () => {
         cliente.query("update estadosmessages set estado='start' where telefono='" + number + "'")
         setTimeout(() => {
-          client.sendText(message.from, `🤩 *Esta idea fue desarrollada por un equipo de estudiantes de Ingeniería de Sistemas y su asesor como parte de una investigación de grado, con el fin de contribuir a los procesos académicos en la Jefatura de Software, aportando soluciones innovadoras y eficientes.* 💪\n\nLos desarrolladores fueron:\nBrayan Camilo Jamanoy Bacca 👉👉 3238146048\nJeisson Fernando Montenegro Rosero\nJorge Albeiro Rivera Rosero\n\n\n*UNICESMAG 2023*`)
+          client.sendText(message.from, `🤩 *ADEL* es un proyecto de investigación de grado que busca contribuir a la Jefatura de Software con soluciones eficientes para apoyar los procesos académicos. 🤓 💪\n*A:* Aprender\n*D:* Decidir\n*E:* Evaluar\n*L:* Lograr\n\n_Brayan Camilo Jamanoy Bacca_\n_Jeisson Fernando Montenegro Rosero_\n\nAsesores:\n_Jorge Albeiro Rivera Rosero_\n_Héctor Andrés Mora Paz_\n\n*UNICESMAG 2023*`)
         }, 2000);
       }
 
@@ -769,7 +767,7 @@ function start(client) {
             client.sendText(message.from, seguirAccion)
           }, 1000);
         } else {
-          msj_npsP = `Solo tienes permitido escribir una letra: \n * E: Estudiante *\n * D: Docente *\n * A: Administrativo * `
+          msj_npsP = `Solo tienes permitido escribir una letra: \n *E: Estudiante*\n *D: Docente*\n *A: Administrativo* `
           client.sendText(message.from, msj_npsP)
         }
 
