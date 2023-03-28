@@ -33,7 +33,7 @@ function azar(date) {
 }
 
 
-//funcion principal ____________________________________
+//función principal ____________________________________
 function start(client) {
 
 
@@ -115,7 +115,7 @@ function start(client) {
         var data_nocontesta = data.nocontesta;
         var data_resp = data.respuestasj;
       } catch {
-        console.log(error);
+        console.log('Hubo unb error');
       }
 
       // impresiones de as variables anteriores
@@ -192,14 +192,6 @@ function start(client) {
         });
 
 
-        client
-          .reply(message.from, `Por favor *${nameUser}* espera un momento. 🤝🤖`, message.id)
-          .then((result) => {
-            chat.lastReceivedKey._serialized
-            console.log('Result: ', result); //return object success
-          }).catch((erro) => {
-            console.error('Error when sending: ', erro); //return object error
-          });
         await cliente.query("update estadosmessages set estado='espera' where id='" + idData + "'")
 
         try {
@@ -218,7 +210,7 @@ function start(client) {
                 console.error('Error when sending: ', erro); //return object error
               });
             await cliente.query("update estadosmessages set estado='encuesta' where id='" + idData + "'")
-            client.sendText(message.from, '💥💥 *NOTA:* 💥💥  📣📢Ten en cuenta que si utilizas Zeus la contraseña cambio por la que ha sido enviada al correo electronico.')
+            client.sendText(message.from, '💥💥 *NOTA:* 💥💥  📣📢Ten en cuenta que si utilizas Zeus la contraseña cambio por la que ha sido enviada al correo electrónico.')
             npsEncuesta()
           }
 
@@ -334,7 +326,7 @@ function start(client) {
                   console.error('Error when sending: ', erro); //return object error
                 });
               await cliente.query("update estadosmessages set estado='encuesta' where id='" + idData + "'")
-              client.sendText(message.from, '💥💥 *NOTA:* 💥💥  📣📢Ten en cuenta la contraseña  de Ruah cambio por la que ha sido enviada al correo electronico.')
+              client.sendText(message.from, '💥💥 *NOTA:* 💥💥  📣📢Ten en cuenta la contraseña  de Ruah cambio por la que ha sido enviada al correo electrónico.')
               npsEncuesta()
             } else {
               client
@@ -343,7 +335,7 @@ function start(client) {
             }
           } catch (error) {
             await browser.close()
-            errorCaragRuah = `Disculpame *${nameUser}* 🥹 lo que sucede es que hay muchas peticiones hacia la plataforma en este momento. Por favor vuelve a escribir tu correo`
+            errorCaragRuah = `Discúlpame *${nameUser}* 🥹 lo que sucede es que hay muchas peticiones hacia la plataforma en este momento. Por favor vuelve a escribir tu correo`
             client
               .reply(message.from, errorCaragRuah, message.id.toString())
               .then((result) => {
@@ -403,7 +395,7 @@ function start(client) {
                 console.error("Error when sending: ", erro); //return object error
               });
           } else if (mrtauruah.includes("ZEUS") && message.isGroupMsg === false) {
-            const msjCambioCOntraseñaZeus = "🔐 Para el cambio de contraseña *Zeus*, por favor, introduce tu documento de identidad 📧.  ¡Consigue una contraseña segura y única!"
+            const msjCambioCOntraseñaZeus = "🔐 Para el cambio de contraseña *Zeus*, por favor, introduce tu correo electrónico personal registrado en la universidad 📧. ¡Consigue una contraseña segura y única!"
             //CAMBIO EL ESTADO A TAU
             const queryUpdateZeus = await cliente.query("update estadosmessages set estado='zeus' where telefono='" + number + "'")
             console.log(queryUpdateZeus.rows);
@@ -419,7 +411,7 @@ function start(client) {
               });
           }
           else {
-            especificarPlataforma = `Lo siento *${nameUser}* 🤔me debes especificar en tu pregunta la plataforma a la que te refieres 💻 para poder ayudarte mejor 🤝. Ya sea *Ruah* o *Tau*`
+            especificarPlataforma = `Lo siento *${nameUser}* 🤔me debes especificar en tu pregunta la plataforma a la que te refieres 💻 para poder ayudarte mejor 🤝. Ya sea *Ruah*, *Tau* o *Zeus*`
             client
               .reply(
                 message.from, especificarPlataforma,
@@ -543,7 +535,7 @@ function start(client) {
       let menuPrincipal = async () => {
         cliente.query("update estadosmessages set estado='start' where telefono='" + number + "'")
         setTimeout(() => {
-          client.sendText(message.from, `${nameUser} *¡Has escrito el comando para el menú principal!*\nTe muestro mis ayudas a continuación: 👇👇\n\n● 🔒Cambio de contraseña para las plataformas Ruah, Tau y Zeus.\n● 📧Información de correo electronico institucional.\n\n Mis comandos son los siguientes 👇👇\n*● Opciones:* Muestra de nuevo el menú para que puedas seguir utilizando mi servicio 🤓\n*● AyudarEncuesta:* Califica mi servicio y ayúdame a mejorar 🤗 \n*● Mejoras:* Sugiere alguna opción nueva para que yo la incorpore 🤝\n*● AcercaDe:* Obtén información sobre mí y mis desarrolladores 🤩\n
+          client.sendText(message.from, `${nameUser} *¡Has escrito el comando para el menú principal!*\nTe muestro mis ayudas a continuación: 👇👇\n\n● 🔒Cambio de contraseña para las plataformas Ruah, Tau y Zeus.\n● 📧Información de correo electrónico institucional.\n\n Mis comandos son los siguientes 👇👇\n*● Opciones:* Muestra de nuevo el menú para que puedas seguir utilizando mi servicio 🤓\n*● AyudarEncuesta:* Califica mi servicio y ayúdame a mejorar 🤗 \n*● Mejoras:* Sugiere alguna opción nueva para que yo la incorpore 🤝\n*● AcercaDe:* Obtén información sobre mí y mis desarrolladores 🤩\n
                     ¿En que te puedo colaborar? 🤔`)
         }, 2000);
       }
@@ -607,7 +599,7 @@ function start(client) {
 
         setTimeout(() => {
           client
-            .sendText(message.from, `Me alegra mucho conocerte * ${nameUser} * 🤗\n Estoy aquí para ayudarte con los siguientes temas: \n
+            .sendText(message.from, `Me alegra mucho conocerte *${nameUser}* 🤗\n Estoy aquí para ayudarte con los siguientes temas: \n
     ● 🔒Cambio de contraseña para las plataformas Ruah, Tau y Zeus.\n
     ● 📧Información de correo electronico institucional.\n
     ¿En que te puedo colaborar ? 🤔`)
